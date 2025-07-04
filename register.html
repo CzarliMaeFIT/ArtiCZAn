@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="register.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <img src="" alt="Description">
+            <p>ArtiCZAn Goods</p>
+        </div>
+        <form>
+            <h2>New Account</h2>
+            <div class="inputBox">
+                <input type="text" required>
+                <label>Username</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" required>
+                <label>Email</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="createPassword" required>
+                <label>Create Password</label>
+                <button type="button" onclick="togglePassword('createPassword', this)">Show</button>
+            </div>
+            <div class="inputBox">
+                <input type="password" id="confirmPassword" required>
+                <label>Confirm Password</label>
+                <button type="button" onclick="togglePassword('confirmPassword', this)">Show</button>
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="Create">
+            </div>
+            <p>Have an Account?
+                <a href="#">Login</a>
+            </p>
+        </form>
+    </div>
+    <!-- JavaScript for animated label effect -->
+    <script>
+        document.querySelectorAll('label').forEach(label => {
+            label.innerHTML = label.innerText.split('').map(
+                (letter, i) => `<span style="transition-delay: ${i * 50}ms">${letter}</span>`
+            ).join('');
+        });
+
+        // CHANGED: Added togglePassword function for show/hide password
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                btn.textContent = "Hide";
+            } else {
+                input.type = "password";
+                btn.textContent = "Show";
+            }
+        }
+    </script>
+</body>
+</html>
